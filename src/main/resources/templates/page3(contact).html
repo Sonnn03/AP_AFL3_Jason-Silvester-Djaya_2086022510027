@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portofolio | Jason Silvester</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+
+<nav>
+    <div class="logo">Tugas Bootstrap</div>
+    <ul>
+        <li><a href="/homepage">Home page</a></li>
+        <li><a href="/aboutme">About Me</a></li>
+        <li><a href="/contact" class="active">Contact</a></li>
+        <li><a href="/gallery">Gallery</a></li>
+        <li><a href="/project">Project</a></li>
+        <li><a href="/skills">Skills</a></li>
+    </ul>
+</nav>
+
+<main class="container py-5">
+
+    <div class="text-center mb-5">
+        <h1 class="fw-bold">Hubungi Saya</h1>
+    </div>
+
+    <!-- ALERT -->
+    <div th:if="${successMessage}"
+         class="alert alert-success alert-dismissible fade show mb-4"
+         role="alert">
+
+        <i class="fas fa-check-circle me-2"></i>
+        <span th:text="${successMessage}"></span>
+
+        <button type="button"
+                class="btn-close"
+                data-bs-dismiss="alert"></button>
+    </div>
+
+    <div th:if="${errorMessage}"
+         class="alert alert-danger alert-dismissible fade show mb-4"
+         role="alert">
+
+        <i class="fas fa-exclamation-circle me-2"></i>
+        <span th:text="${errorMessage}"></span>
+
+        <button type="button"
+                class="btn-close"
+                data-bs-dismiss="alert"></button>
+    </div>
+
+    <section class="contact-section">
+        <div class="row g-4">
+
+            <!-- CONTACT INFO -->
+            <div class="col-md-5">
+                <div class="contact-info-card">
+
+                    <h4 class="fw-bold mb-4">
+                        Informasi Kontak
+                    </h4>
+
+                    <div class="contact-info-item">
+                        <i class="fas fa-envelope"></i>
+
+                        <div>
+                            <p class="label">Email</p>
+                            <p class="value">jasonnn@gmail.com</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-info-item">
+                        <i class="fas fa-phone"></i>
+
+                        <div>
+                            <p class="label">Telepon</p>
+                            <p class="value">+62 821-8841-6646</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-info-item">
+                        <i class="fas fa-map-marker-alt"></i>
+
+                        <div>
+                            <p class="label">Lokasi</p>
+                            <p class="value">Makassar, Indonesia</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- FORM -->
+            <div class="col-md-7">
+                <div class="contact-form-card">
+
+                    <!-- JUDUL -->
+                    <h4 class="fw-bold mb-4"
+                        th:text="${editMode == true ? 'Edit Pesan' : 'Kirim Pesan'}">
+                    </h4>
+
+                                        <!-- FORM TAMBAH -->
+                    <form th:if="${editMode != true}"
+                        th:action="@{/contact/kirim}"
+                        th:object="${kontak}"
+                        method="post">
+
+                        <div class="mb-3">
+                            <label class="form-label text-muted">Nama</label>
+
+                            <input type="text"
+                                th:field="*{nama}"
+                                class="form-control"
+                                placeholder="Nama"
+                                required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label text-muted">Email</label>
+
+                            <input type="email"
+                                th:field="*{email}"
+                                class="form-control"
+                                placeholder="Email"
+                                required>
+                        </div>
+
+                        <div class="mb-4">
+                            <label class="form-label text-muted">Pesan</label>
+
+                            <textarea th:field="*{pesan}"
+                                    class="form-control"
+                                    rows="5"
+                                    placeholder="Pesan"
+                                    required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-send">
+                            <i class="fas fa-paper-plane me-2"></i>
+                            Kirim Pesan
+                        </button>
+
+                    </form>
+
+                    <!-- FORM EDIT -->
+                    <form th:if="${editMode == true}"
+                          th:action="@{|/contact/edit/${kontakEdit.id}|}"
+                          th:object="${kontakEdit}"
+                          method="post">
+
+                        <div class="mb-3">
+                            <label class="form-label text-muted">Nama</label>
+                            <input type="text"
+                                   th:field="*{nama}"
+                                   class="form-control">
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label text-muted">Email</label>
+                            <input type="email"
+                                   th:field="*{email}"
+                                   class="form-control">
+                        </div>
+
+                        <div class="mb-4">
+                            <label class="form-label text-muted">Pesan</label>
+                            <textarea th:field="*{pesan}"
+                                      class="form-control"
+                                      rows="5"></textarea>
+                        </div>
+
+                        <button type="submit"
+                                class="btn btn-warning">
+                            <i class="fas fa-pencil-alt me-2"></i>
+                            Simpan Perubahan
+                        </button>
+
+                        <a href="/contact"
+                           class="btn btn-secondary ms-2">
+                            Batal
+                        </a>
+                    </form>
+
+                    <hr class="my-5">
+
+                    <!-- TABEL -->
+                    <h4 class="fw-bold mb-4">Daftar Pesan</h4>
+
+                    <div class="table-responsive">
+
+                        <table class="table table-bordered table-hover align-middle">
+
+                            <thead class="table-dark">
+                                <tr>
+                                    <th>No</th>
+                                    <th>Nama</th>
+                                    <th>Email</th>
+                                    <th>Pesan</th>
+                                    <th>Aksi</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+
+                                <tr th:each="k, i : ${listKontak}">
+                                    <td th:text="${i.count}"></td>
+                                    <td th:text="${k.nama}"></td>
+                                    <td th:text="${k.email}"></td>
+                                    <td th:text="${k.pesan}"></td>
+                                    <td>
+
+                                        <!-- EDIT -->
+                                        <a th:href="@{|/contact/edit/${k.id}|}"
+                                           class="btn btn-warning btn-sm me-1">
+
+                                            <i class="fas fa-pencil-alt"></i>
+                                            Edit
+                                        </a>
+
+                                        <!-- HAPUS -->
+                                        <form th:action="@{|/contact/hapus/${k.id}|}"
+                                              method="post"
+                                              style="display:inline"
+                                              onsubmit="return confirm('Yakin ingin menghapus pesan ini?')">
+
+                                            <button type="submit"
+                                                    class="btn btn-danger btn-sm">
+
+                                                <i class="fas fa-trash"></i>
+                                                Hapus
+                                            </button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<footer class="main-footer">
+    <div class="copyright-text">
+        <p>&copy; 2026 Jason Silvester Djaya.</p>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

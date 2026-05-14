@@ -1,0 +1,338 @@
+*{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+         body {
+            display: flex;
+            flex-direction: column;
+            background-color: #f3f4f6;
+            min-height: 100vh;
+        }
+
+        /* --- Navbar--- */
+        nav {
+            width: 100%;           
+            background-color: #1f1f1f;
+            color: white;
+            padding: 30px 40px;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            top: 0;                
+            z-index: 1000;
+        }
+
+        nav .logo {
+            font-weight: 700;
+            font-size: 1.5rem;
+            margin-bottom: 0;
+            padding-left: 0;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;         
+            gap: 10px;             
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            margin-bottom: 0;
+        }
+
+        nav ul li a {
+            color: #a0a0a0;
+            text-decoration: none;
+            padding: 12px 15px;
+            display: flex;
+            align-items: center;
+            border-radius: 8px;
+            transition: 0.3s;
+        }
+
+        nav ul li a i {
+            margin-right: 15px;
+            width: 20px;
+        }
+
+        nav ul li a.active {
+            background-color: #333;
+            color: #ff4d00; /* Warna Oranye */
+        }
+
+        /* --- MAIN CONTENT --- */
+       main {
+            margin-left: 0;        
+            width: 100%;          
+            margin-top: 80px;      
+            padding: 40px 50px;
+            padding-bottom: 80px;
+            flex-grow: 1;
+        }
+
+        /* Hero Section (Kotak Putih) */
+        .hero-card {
+            background: white;
+            border-radius: 24px;
+            padding: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            margin-bottom: 40px;
+        }
+
+        .hero-text {
+            max-width: 60%;
+        }
+
+        .hero-text h1 {
+            font-size: 3rem;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            color: #111;
+        }
+
+        .hero-text p {
+            color: #000000;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            font-size: 1.1rem;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .btn-dark {
+            background: #111;
+            color: white;
+        }
+
+        .btn-orange {
+            background: #ff4d00;
+            color: white;
+        }
+
+        .btn:hover {
+            opacity: 0.8;
+            transform: translateY(-2px);
+        }
+
+        .hero-image img {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 8px solid #202020;
+        }
+
+        /* 👇 TAMBAHAN BARU UNTUK MENGECILKAN UKURAN FOTO 👇 */
+        .hero-img {
+            width: 250px;
+            height: 250px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        
+        .hero-img:hover {
+            transform: scale(1.05);
+        }
+        /* 👆 BATAS TAMBAHAN BARU 👆 */
+
+        .section-card {
+            background: #e5e7eb;
+            border-radius: 20px;
+            padding: 20px;
+        }
+
+        .section-card2 {
+            background: #c4c4c4;
+            border-radius: 20px;
+            padding: 20px;
+        }
+
+        .section-card h2 {
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+
+        .table-container {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.95rem;
+        }
+
+        th {
+            background-color: #d1d5db;
+            text-align: left;
+            padding: 15px;
+            color: #374151;
+        }
+
+        td {
+            padding: 15px;
+            border-bottom: 1px solid #f3f4f6;
+            color: #4b5563;
+        }
+
+        /* --- GALLERY STYLE --- */
+        .gallery-img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 16px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .gallery-img:hover {
+            transform: scale(1.03);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+        }
+
+        /* Styling Footer */
+        .main-footer {
+            width: 100%;
+            background-color: #212529;
+            color: #ffffff;
+            padding: 40px 0;
+            margin-top: 50px;
+            text-align: center;
+        }
+
+        .social-icons {
+            margin-bottom: 20px;
+        }
+
+        .social-icons a {
+            color: #ffffff;
+            font-size: 24px;
+            margin: 0 15px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            color: #ffffff;
+            transform: translateY(-5px);
+        }
+
+        .copyright-text p {
+            margin: 0;
+            font-size: 14px;
+            font-family: 'Inter', sans-serif;
+            opacity: 0.8;
+        }
+
+        .contact-section {
+            background-color: white;
+            border-radius: 24px;
+            padding: 60px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            margin-bottom: 40px;
+        }
+        .contact-info-card, .contact-form-card {
+            background-color: #f9f9f9;
+            border-radius: 16px;
+            padding: 30px;
+            height: 100%;
+        }
+        .contact-info-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .contact-info-item i {
+            font-size: 24px;
+            color: #000000;
+            margin-right: 15px;
+        }
+        .contact-info-item div p {
+            margin: 0;
+        }
+        .contact-info-item div p.label {
+            font-weight: 600;
+            color: #333;
+        }
+        .contact-info-item div p.value {
+            color: #666;
+        }
+        .form-control {
+            border-radius: 8px;
+            padding: 12px;
+            border: 1px solid #ddd;
+        }
+        .btn-send {
+            background-color: #e0e0e0;
+            color: #000000;
+            border: none;
+            border-radius: 8px;
+            padding: 12px 24px;
+            font-weight: 600;
+            width: 100%;
+        }
+        .btn-send:hover {
+            background-color: #cce5ff;
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            nav ul {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            nav ul li a {
+                width: 100%;
+                padding: 12px 20px;
+            }
+
+            .hero-card {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .hero-text {
+                max-width: 100%;
+                margin-bottom: 30px;
+            }
+
+            .hero-image img {
+                width: 200px;
+                height: 200px;
+            }
+
+            /* Tambahan agar ukuran foto di HP tidak terlalu besar */
+            .hero-img {
+                width: 200px;
+                height: 200px;
+                margin-top: 20px;
+            }
+        }
