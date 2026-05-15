@@ -12,39 +12,31 @@ public class KontakController {
 
     @Autowired
     private KontakService service;
-
-    // =====================================================
-    //  HALAMAN UTAMA / NON-FORM
-    // =====================================================
     
     @GetMapping({"/", "/homepage"})
     public String halamanHomepage() {
-        return "page1(main)"; // Memanggil file page1(main).html di templates
+        return "page1(main)";
     }
 
     @GetMapping("/aboutme")
     public String halamanAboutme() {
-        return "page2(about)"; // Memanggil file page2(about).html di templates
+        return "page2(about)";
     }
 
     @GetMapping("/gallery")
     public String halamanGallery() {
-        return "page4(gallery)"; // Memanggil file page4(gallery).html di templates
+        return "page4(gallery)";
     }
 
     @GetMapping("/project")
     public String halamanProject() {
-        return "page5(project)"; // Memanggil file page5(project).html di templates
+        return "page5(project)";
     }
 
     @GetMapping("/skills")
     public String halamanSkills() {
-        return "page6(skills)"; // Memanggil file page6(skills).html di templates
+        return "page6(skills)";
     }
-
-    // =====================================================
-    //  HALAMAN KONTAK (Formulir & Daftar Pesan)
-    // =====================================================
     
     @GetMapping("/contact")
     public String halamanKontak(Model model,
@@ -60,13 +52,9 @@ public class KontakController {
         }
 
         model.addAttribute("totalKontak", service.total());
-        return "page3(contact)"; // Memanggil file page3(contact).html di templates
+        return "page3(contact)";
     }
 
-    // =====================================================
-    //  FUNGSI CRUD KONTAK (Tetap sama seperti kodemu)
-    // =====================================================
-    
     @PostMapping("/contact/kirim")
     public String kirimPesan(@ModelAttribute("kontak") Kontak kontak,
                              BindingResult result,

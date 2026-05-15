@@ -141,7 +141,6 @@
                                     placeholder="Pesan"
                                     required></textarea>
                         </div>
-
                         <button type="submit" class="btn btn-send">
                             <i class="fas fa-paper-plane me-2"></i>
                             Kirim Pesan
@@ -157,7 +156,6 @@
 
                         <div class="mb-3">
                             <label class="form-label text-muted">Nama</label>
-
                             <input type="text"
                                    th:field="*{nama}"
                                    class="form-control">
@@ -165,7 +163,6 @@
 
                         <div class="mb-3">
                             <label class="form-label text-muted">Email</label>
-
                             <input type="email"
                                    th:field="*{email}"
                                    class="form-control">
@@ -173,7 +170,6 @@
 
                         <div class="mb-4">
                             <label class="form-label text-muted">Pesan</label>
-
                             <textarea th:field="*{pesan}"
                                       class="form-control"
                                       rows="5"></textarea>
@@ -181,7 +177,6 @@
 
                         <button type="submit"
                                 class="btn btn-warning">
-
                             <i class="fas fa-pencil-alt me-2"></i>
                             Simpan Perubahan
                         </button>
@@ -214,15 +209,10 @@
                             <tbody>
 
                                 <tr th:each="k, i : ${listKontak}">
-
                                     <td th:text="${i.count}"></td>
-
                                     <td th:text="${k.nama}"></td>
-
                                     <td th:text="${k.email}"></td>
-
                                     <td th:text="${k.pesan}"></td>
-
                                     <td>
 
                                         <!-- EDIT -->
@@ -246,20 +236,13 @@
                                                 Hapus
                                             </button>
                                         </form>
-
                                     </td>
-
                                 </tr>
-
                             </tbody>
-
                         </table>
-
                     </div>
-
                 </div>
             </div>
-
         </div>
     </section>
 

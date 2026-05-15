@@ -38,7 +38,7 @@ public class Kontak {
         updatedAt = LocalDateTime.now();
     }
 
-    // ========== Konstruktor ==========
+    // ========== Constructor ==========
     public Kontak() {}
 
     public Kontak(String nama, String email, String pesan) {

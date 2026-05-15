@@ -12,28 +12,28 @@ public class KontakService {
     @Autowired
     private KontakRepository repository;
 
-    // ===== CREATE =====
+    //CREATE
     public Kontak simpan(Kontak kontak) {
         return repository.save(kontak);
     }
 
-    // ===== READ - semua (terbaru dulu) =====
+    //READ (terbaru dulu)
     public List<Kontak> ambilSemua() {
         return repository.findAllByOrderByCreatedAtDesc();
     }
 
-    // ===== READ - by ID =====
+    //READ ID
     public Optional<Kontak> cariById(Long id) {
         return repository.findById(id);
     }
 
-    // ===== READ - by keyword =====
+    //=READ keyword
     public List<Kontak> cariByKeyword(String keyword) {
         if (keyword == null || keyword.isBlank()) return ambilSemua();
         return repository.cariByKeyword(keyword.trim());
     }
 
-    // ===== UPDATE =====
+    //UPDATE
     public Kontak update(Long id, Kontak dataBaru) {
         Kontak existing = repository.findById(id)
             .orElseThrow(() -> new RuntimeException("Kontak ID " + id + " tidak ditemukan"));
@@ -44,7 +44,7 @@ public class KontakService {
         return repository.save(existing);
     }
 
-    // ===== DELETE =====
+    //DELETE
     public void hapus(Long id) {
         if (!repository.existsById(id)) {
             throw new RuntimeException("Kontak ID " + id + " tidak ditemukan");
@@ -52,7 +52,7 @@ public class KontakService {
         repository.deleteById(id);
     }
 
-    // ===== COUNT =====
+    //COUNT
     public long total() {
         return repository.count();
     }
